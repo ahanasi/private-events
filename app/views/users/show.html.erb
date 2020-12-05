@@ -1,13 +1,11 @@
 <div class="container-fluid h-100 bg-light">
   <div class="row h-75 align-items-center">
     <div class="col-md-4 offset-md-4 justify-content-center align-self-center">
-    <h1><small class="font-weight-light">Sign Up</small></h1>
-      <div class="card ">
-        <div class="card-body">
-          <%= render "form" %>
+      <div class="card align-items-center h-100">
+        <div class="card-body mt-2">
+          <p class="lead">Welcome, <span class="text-info">@<%= @user.username %></span>!</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
