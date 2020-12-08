@@ -2,8 +2,21 @@
   <div class="row h-75 align-items-center">
     <div class="col-md-4 offset-md-4 justify-content-center align-self-center">
       <div class="card align-items-center h-100">
+        <div class="card-header w-100">
+          <h3>Events</h3> 
+        </div>
         <div class="card-body mt-2">
-          <p class="lead">Welcome, <span class="text-info">@<%= @user.username %></span>!</p>
+          
+          <% if @user.created_events.exists? %>
+            <ul class="list-group list-group-flush">
+              <% @user.created_events.each do |event| %>
+              <li class="list-group-item"><%= event.title %>
+              </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>You have not created any events yet!</p>
+          <% end %>
         </div>
       </div>
     </div>
