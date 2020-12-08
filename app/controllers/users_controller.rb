@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Object successfully created"
+      flash[:success] = "Your account has been successfully created!"
       redirect_to root_path
     else
       flash[:error] = "Something went wrong"

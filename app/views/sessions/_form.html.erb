@@ -1,16 +1,18 @@
 <%= simple_form_for :session, url: :login, wrapper: :input_group do |f| %>
 
-  <%- if f.error_notification %>
+  <% if f.error_notification %>
     <div class="alert alert-error fade in">
       <a class="close" data-dismiss="alert" href="#">&times;</a>
       <%= f.error_notification %>
     </div>
-  <%- end %>
+  <% end %>
 
   <div class="form-inputs">
-    <%= f.input :username, prepend: "@", placeholder: 'Username', label: false %>
+    <%= f.input :username, prepend: "@", placeholder: "Username", label: false %>
   </div>
 
-  <%= f.button :submit, "Login", class: "btn-primary mr-2" %>
-  <%= link_to "Cancel", root_path, class: "btn btn-outline-secondary" %>
+  <div class="form-actions">
+    <%= f.button :submit, "Login", class: "btn-primary mr-2" %>
+    <%= link_to "Cancel", root_path, class: "btn btn-outline-secondary" %>
+  </div>
 <% end %>
