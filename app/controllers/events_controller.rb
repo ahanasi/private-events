@@ -31,6 +31,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def attend
+    @event = Event.find(params[:id])
+    @event.attendees << current_user
+    flash[:notice] = "`You are now attending: #{@event.title}`"
+    redirect_to current_user
+  end
+
   private
 
   # Only allow a list of trusted parameters through.
