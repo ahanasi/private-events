@@ -1,19 +1,36 @@
 <div class="container-fluid h-100 bg-light">
   <div class="row h-75 align-items-center">
-    <div class="col-md-4 offset-md-4 justify-content-center align-self-center">
+    <div class="col-md-4 offset-md-2 justify-content-center align-self-center">
       <div class="card h-100">
         <div class="card-header w-100">
-          <h5>Events</h5> 
+          <h5>All Upcoming Events</h5> 
         </div>
         <div class="card-body mt-2"> 
             <ul class="list-group list-group-flush">
-              
               <% if @events.present? %>
-                <% @events.each do |event| %>
+                <% Event.upcoming.each do |event| %>
                   <%= link_to event.title, event_path(event), class: "list-group-item list-group-item-action" %>
                 <% end %>
               <% else %>
-               <li class="list-group-item">No events yet!</li>
+               <li class="list-group-item">No upcoming events!</li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 justify-content-center align-self-center">
+      <div class="card h-100">
+        <div class="card-header w-100">
+          <h5>All Past Events</h5> 
+        </div>
+        <div class="card-body mt-2"> 
+            <ul class="list-group list-group-flush">
+              <% if @events.present? %>
+                <% Event.past.each do |event| %>
+                  <%= link_to event.title, event_path(event), class: "list-group-item list-group-item-action" %>
+                <% end %>
+              <% else %>
+               <li class="list-group-item">No past events!</li>
               <% end %>
             </ul>
         </div>
