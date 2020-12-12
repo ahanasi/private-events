@@ -22,6 +22,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = current_user.created_events.build(event_params)
+    @event.attendees << current_user
+    @event.date = DateTime.strptime(event_params[:date], "%m/%d/%Y")
     if @event.save
       flash[:success] = "Event successfully created!"
       redirect_to root_path

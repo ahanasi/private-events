@@ -16,4 +16,10 @@
 //= require_tree .
 //= require jquery3
 //= require popper
+//= require bootstrap-datepicker
 //= require bootstrap-sprockets
+
+
+$(function() {
+    $('input.datepicker').data({behaviour: "datepicker"}).datepicker();
+});

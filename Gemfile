@@ -36,6 +36,9 @@ gem "jbuilder", "~> 2.5"
 # Bootstrap
 gem "bootstrap", "~> 4.5.3"
 
+#Bootstrap date picker
+gem "bootstrap-datepicker-rails", "~> 1.9", ">= 1.9.0.1"
+
 # Jquery
 gem "jquery-rails"
 
