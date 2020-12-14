@@ -7,7 +7,7 @@
         </div>
         <div class="card-body mt-2"> 
             <ul class="list-group list-group-flush">
-              <% if @events.present? %>
+              <% if @events.upcoming.present? %>
                 <% Event.upcoming.each do |event| %>
                   <%= link_to event.title, event_path(event), class: "list-group-item list-group-item-action" %>
                 <% end %>
@@ -25,7 +25,7 @@
         </div>
         <div class="card-body mt-2"> 
             <ul class="list-group list-group-flush">
-              <% if @events.present? %>
+              <% if @events.past.present? %>
                 <% Event.past.each do |event| %>
                   <%= link_to event.title, event_path(event), class: "list-group-item list-group-item-action" %>
                 <% end %>

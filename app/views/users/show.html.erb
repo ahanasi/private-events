@@ -6,7 +6,7 @@
           <h5>Upcoming Events</h5> 
         </div>
         <div class="card-body mt-2"> 
-          <% if current_user.attended_events.exists? %>
+          <% if current_user.attended_events.where("date >= ?", Date.current).exists? %>
             <ul class="list-group list-group-flush">
               <% current_user.attended_events.where("date >= ?", Date.current).each do |event| %>
                 <%= link_to(event_path(event), class: "list-group-item list-group-item-action flex-column align-items-start") do %>
@@ -31,7 +31,7 @@
           <h5>Previously Attended Events</h5> 
         </div>
         <div class="card-body mt-2"> 
-          <% if current_user.attended_events.exists? %>
+          <% if current_user.attended_events.where("date < ?", Date.current).exists? %>
             <ul class="list-group list-group-flush">
               <% current_user.attended_events.where("date < ?", Date.current).each do |event| %>
                 <%= link_to(event_path(event), class: "list-group-item list-group-item-action flex-column align-items-start") do %>
