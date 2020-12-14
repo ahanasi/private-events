@@ -1,6 +1,6 @@
 # Private-Events
 
-Sign Up or Login as Username: Sam --> [Live Preview](https://git.heroku.com/private-events-app.git)
+Sign Up or Login as Username: Sam --> [Live Preview](https://private-events-app.herokuapp.com/)
 
 Private-Events is similar to EventBrite, which allows users to create events and then manage attendee signups. Events take place at a specific date and location.
 
