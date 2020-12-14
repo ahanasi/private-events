@@ -8,30 +8,40 @@
   <div class="row pt-5 align-items-center">
     <div class="col-md-6 offset-md-2 justify-content-center align-self-center">
       <div class="card h-100">
-        <div class="card-header w-100">
+        <div class="card-body m-2"> 
+          <div class="card-title">
+            <div class="row">
+              <div class="col-md-10">
+                <h5><%= @event.title %> </h5>
+              </div>
+              <% if logged_in? %>
+                <div class="col-md-2">
+                  <% if @event.creator == current_user %>
+                    <span class="float-right text-info">Hosting  <i class="fa fa-check"></i></span>
+                  <% elsif @event.attendees.include?(current_user) %>
+                    <span class="float-right text-success">Attending  <i class="fa fa-check"></i></span> 
+                  <% else %>
+                    <%= button_to "Attend", attend_event_path, method: :get, class: "btn btn-sm btn-success float-right" %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-10">
-              <h5>Event Details</h5>
+              <h6 class="card-subtitle mb-2 text-muted font-italic"><%= @event.date %> -- <%= @event.location %></h6>  
             </div>
-            <% if logged_in? %>
-              <div class="col-md-2">
-                <% if @event.creator == current_user %>
-                  <span class="float-right text-info">Hosting  <i class="fa fa-check"></i></span>
-                <% elsif @event.attendees.include?(current_user) %>
-                  <span class="float-right text-success">Attending  <i class="fa fa-check"></i></span> 
-                <% else %>
-                  <%= button_to "Attend", attend_event_path, method: :get, class: "btn btn-sm btn-success float-right" %>
-                <% end %>
-              </div>
-            <% end %>
           </div>
-        </div>
-        <div class="card-body mt-2"> 
-          <p class="card-text">
-            <strong>Created By:</strong>
-            <%= @event.creator.username %>
-          </p>
-          <%= link_to "Back", events_path, class: "card-link" %>
+          <div class="row card-text">
+            <div class="col-md-10">
+              <%= @event.description %>
+            </div>
+          </div>
+          <p class="text-muted mt-2 card-text">Hosted By @<%= @event.creator.username %></p>
+          <hr/>
+          <%= link_to events_path, class: "card-link" do %>
+          <i class="fa fa-arrow-left" aria-hidden="true"></i> All Events
+          <% end %>
         </div>
       </div>
     </div>
@@ -48,13 +58,11 @@
           </div>
         </div>
         <div class="card-body mt-2"> 
-          <p class="card-text">
-          <ul class="list-group">
+          <ul class="list-group list-group-flush">
             <% @event.attendees.uniq.each do |attendee| %>
-            <li class="list-group-item"><%= attendee.username %></li>
+              <li class="list-group-item"><%= attendee.username %></li>
+            <% end %>
           </ul>
-          <% end %>
-          </p>
         </div>
       </div>
     </div>
